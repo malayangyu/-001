@@ -174,11 +174,13 @@ function productCardHTML(p) {
 function initHome() {
   const featured = document.getElementById('featured-grid');
   if (featured) {
-    featured.innerHTML = PRODUCTS.filter((p) => p.badge).slice(0, 8).map(productCardHTML).join('');
+    const badged = PRODUCTS.filter((p) => p.badge);
+    const picks = badged.slice(0, 4).concat(badged.slice(-4));
+    featured.innerHTML = picks.map(productCardHTML).join('');
   }
   const newArrivals = document.getElementById('new-grid');
   if (newArrivals) {
-    newArrivals.innerHTML = PRODUCTS.filter((p) => p.category === 'jewelry').slice(0, 4).map(productCardHTML).join('');
+    newArrivals.innerHTML = PRODUCTS.filter((p) => p.category === 'jewelry').slice(-4).map(productCardHTML).join('');
   }
 }
 
@@ -242,14 +244,15 @@ function initProduct() {
   const crumb = document.getElementById('crumb-name');
   if (crumb) crumb.textContent = p.name;
 
-  const thumbs = [0, 1, 2].map((i) => `
-    <button type="button" class="${i === 0 ? 'active' : ''}" data-thumb="${i}" style="position:relative;overflow:hidden" aria-label="View image ${i + 1}">
-      <img src="${p.image}" alt="${p.name}" style="object-position:${['center 30%', 'center 55%', 'center 80%'][i]};transform:scale(${1 + i * 0.22})">
+  const gallery = p.images && p.images.length ? p.images : [p.image];
+  const thumbs = gallery.map((src, i) => `
+    <button type="button" class="${i === 0 ? 'active' : ''}" data-thumb="${i}" aria-label="View image ${i + 1}">
+      <img src="${src}" alt="${p.name} view ${i + 1}">
     </button>`).join('');
 
   root.innerHTML = `
     <div class="gallery">
-      <div class="gallery-main"><img id="main-image" src="${p.image}" alt="${p.name}"></div>
+      <div class="gallery-main"><img id="main-image" src="${gallery[0]}" alt="${p.name}"></div>
       <div class="gallery-thumbs">${thumbs}</div>
     </div>
     <div class="detail-info">
@@ -332,8 +335,9 @@ function initProduct() {
       btn.classList.add('active');
       const i = Number(btn.dataset.thumb);
       const img = document.getElementById('main-image');
-      img.style.transform = `scale(${1 + i * 0.22})`;
-      img.style.transformOrigin = ['center 30%', 'center 55%', 'center 80%'][i];
+      img.src = gallery[i];
+      img.style.transform = '';
+      img.style.transformOrigin = '';
     });
   });
 
