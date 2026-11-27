@@ -1,5 +1,5 @@
 /* ============================================================
-   MAISON LUNE — front-end store styles
+   CROSSUM — front-end store styles
    ============================================================ */
 
 :root {
@@ -475,6 +475,7 @@ p { margin: 0 0 16px; }
 }
 .info-list strong { display: block; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; margin-bottom: 3px; }
 .info-list span { font-size: 14px; color: var(--ink-soft); }
+.info-list a:hover { color: var(--gold); }
 .contact-form-wrap { background: var(--white); border: 1px solid var(--line); padding: 38px; }
 .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
 .field { margin-bottom: 18px; }

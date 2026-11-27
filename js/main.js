@@ -1,5 +1,5 @@
 /* ============================================================
-   MAISON LUNE — front-end interactions
+   CROSSUM — front-end interactions
    ============================================================ */
 
 const CART_KEY = 'maison_lune_cart';
@@ -238,7 +238,7 @@ function initProduct() {
   if (!root) return;
   const params = new URLSearchParams(window.location.search);
   const p = PRODUCTS.find((x) => x.id === params.get('id')) || PRODUCTS[0];
-  document.title = p.name + ' | MAISON LUNE';
+  document.title = p.name + ' | CROSSUM';
   const crumb = document.getElementById('crumb-name');
   if (crumb) crumb.textContent = p.name;
 

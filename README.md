@@ -1,4 +1,10 @@
-# MAISON LUNE
+# CROSSUM
+
+Official website: https://crossum.online
+
+Company: HONG KONG CROSSUM LIMITED / 香港越商有限公司
+Contact: YE FANG · info@crossum.online · 52900344
+Address: Room 17C, 15/F, Vanta Industrial Centre, 21-33 Tai Lin Pai Road, Kwai Chung, New Territories, Hong Kong, China
 
 一个纯前端的外贸服饰 / 首饰展示网站，英文内容，无后端、无支付功能。
 
@@ -37,7 +43,7 @@ npx serve .
 cd D:/project
 git init
 git add .
-git commit -m "Initial commit: MAISON LUNE front-end store"
+git commit -m "Initial commit: CROSSUM front-end store"
 git remote add origin <你的仓库地址>
 git push -u origin main
 ```
